@@ -411,7 +411,7 @@
           </configuration>
       </plugin>
 
-
+      
       <plugin>
         <!-- Override source and target from the ASF parent -->
         <groupId>org.apache.maven.plugins</groupId>
@@ -425,6 +425,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
+        <configuration>
+          <argLine>${extraJavaTestArgs}</argLine>
+        </configuration>
         <version>2.10</version>
         <executions>
           <execution>
@@ -599,6 +602,13 @@
       <properties>
         <thrift.version>0.9.0</thrift.version>
       </properties>
+    </profile>
+     <profile>
+      <id>vector-plugins</id>
+      <modules>
+        <module>parquet-plugins/parquet-encoding-vector</module>
+        <module>parquet-plugins/parquet-plugins-benchmarks</module>
+      </modules>
     </profile>
   </profiles>
 </project>
